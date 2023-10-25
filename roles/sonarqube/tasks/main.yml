@@ -1,0 +1,12 @@
+- name: Make HTTP call to trigger operator task
+  uri:
+    method: POST
+    url: http://sonarqube-sonarqube:9000/api/projects/create?project={{ project }}&name={{ project_name }}
+    user: admin
+    password: "123456"
+    force_basic_auth: yes
+    return_content: yes
+  register: curl_response
+
+- debug:
+    var: curl_response.content

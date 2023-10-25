@@ -1,0 +1,10 @@
+---
+# Use the 'create api' subcommand to add watches to this file.
+- version: v1alpha1
+  group: cache.sonarqube
+  kind: Sonarqube
+  playbook: playbooks/sonarqube-create.yml
+  finalizer:
+    name: sonarqubedelete.nttdata.com
+    playbook: playbooks/sonarqube-delete.yml
+#+kubebuilder:scaffold:watch

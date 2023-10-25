@@ -1,0 +1,27 @@
+# permissions for end users to view sonarqubes.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: sonarqube-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: sonarqube
+    app.kubernetes.io/part-of: sonarqube
+    app.kubernetes.io/managed-by: kustomize
+  name: sonarqube-viewer-role
+rules:
+- apiGroups:
+  - cache.sonarqube
+  resources:
+  - sonarqubes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - cache.sonarqube
+  resources:
+  - sonarqubes/status
+  verbs:
+  - get

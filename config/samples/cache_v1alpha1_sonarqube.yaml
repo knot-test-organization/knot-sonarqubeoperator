@@ -1,0 +1,12 @@
+apiVersion: cache.sonarqube/v1alpha1
+kind: Sonarqube
+metadata:
+  labels:
+    app.kubernetes.io/name: sonarqube
+    app.kubernetes.io/instance: sonarqube-sample
+    app.kubernetes.io/part-of: sonarqube
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: sonarqube
+  name: sonarqube-sample
+spec:
+  # TODO(user): Add fields here

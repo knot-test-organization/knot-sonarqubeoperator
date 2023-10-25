@@ -1,0 +1,26 @@
+# - name: Make HTTP call to trigger operator task
+#   uri:
+#     method: POST
+#     url: http://sonarqube-sonarqube:9000/api/projects/delete?project={{ project }}
+#     user: admin
+#     password: "123456"
+#     force_basic_auth: yes
+#     return_content: yes
+#   register: curl_response
+#   changed_when: curl_response.status == 204
+#   ignore_errors: true
+
+# - debug:
+#     var: curl_response.content
+
+- name: set username variable
+  set_fact:
+    username: "admin"
+
+- name: set PAT variable
+  set_fact:
+    PAT: "123456"
+
+- name: Delete Sonarqube project
+  shell: "curl -u {{ username }}:{{ PAT }} -X POST http://sonarqube-sonarqube:9000/api/projects/delete?project={{ project }}"
+  ignore_errors: true
